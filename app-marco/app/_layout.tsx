@@ -34,6 +34,12 @@ const LoginScreen: React.FC = () => {
   }, [isLocked]);
 
   const handleLogin = () => {
+    
+    if (username.trim() === '' || password.trim() === '') {
+      Alert.alert('Input Error', 'Username and password cannot be empty.');
+      return;
+    }
+
     const user = users.find(
       (user) => user.username === username && user.password === password
     );
@@ -56,9 +62,9 @@ const LoginScreen: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <Image source={require('../assets/images/marc0_logo.png')} 
-      style={styles.logo} 
-      />
+      <View style={styles.logoContainer}>
+        <Image source={require('./assets/marc_logo.png')} style={styles.logo} />
+      </View>
 
       <Text style={styles.label}>USERNAME</Text>
       <TextInput
@@ -67,7 +73,7 @@ const LoginScreen: React.FC = () => {
         placeholderTextColor="#aaa"
         value={username}
         onChangeText={setUsername}
-        editable={!isLocked} 
+        editable={!isLocked}
       />
 
       <Text style={styles.label}>PASSWORD</Text>
@@ -101,6 +107,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
+  },
+  logoContainer: {
+    width: '100%',
+    alignItems: 'center',
+    marginBottom: 40,
   },
   logo: {
     width: '100%',
