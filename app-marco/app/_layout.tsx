@@ -36,7 +36,7 @@ const LoginScreen: React.FC = () => {
   const handleLogin = () => {
     
     if (username.trim() === '' || password.trim() === '') {
-      Alert.alert('Input Error', 'Username and password cannot be empty.');
+      Alert.alert('Input Error', 'Usuario y contraseña no pueden estar vacias.');
       return;
     }
 
@@ -53,7 +53,7 @@ const LoginScreen: React.FC = () => {
       
       if (newAttempts >= 3) {
         setIsLocked(true);
-        Alert.alert('Too Many Attempts', 'Please wait 30 seconds before trying again.');
+        Alert.alert('Muchos intentos fallidos', 'Por favor espera y vuelvelo a intentar en 30 segundos.');
       } else {
         Alert.alert('Login Failed', 'Invalid username or password');
       }
@@ -63,7 +63,7 @@ const LoginScreen: React.FC = () => {
   return (
     <View style={styles.container}>
       <View style={styles.logoContainer}>
-        <Image source={require('./assets/marc_logo.png')} style={styles.logo} />
+        <Image source={require('../assets/images/marc0_logo.png')} style={styles.logo} />
       </View>
 
       <Text style={styles.label}>USERNAME</Text>
